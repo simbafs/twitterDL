@@ -14,6 +14,7 @@ export default function handler(req, res) {
 
 	let missed = ["userid"].filter(i => !req.query[i]);
 	if (missed.length > 0) {
+		console.log(`GET /api/tweets 400 miss ${missed.join(",")}`);
 		return res.status(400).json({
 			error: `miss ${missed.join(",")}`,
 		});
@@ -30,7 +31,10 @@ export default function handler(req, res) {
 			flag = false;
 			console.error("error", { userid, times }, err);
 		}
-		if (flag) return res.status(200).json(data);
+		if (flag) {
+			console.log(`GET /api/tweets 200 from cache ${userid} ${tiems}`);
+			return res.status(200).json(data);
+		}
 	}
 
 	getPosts(userid, times || -1, process.env.BEARER_TOKEN)
@@ -38,6 +42,12 @@ export default function handler(req, res) {
 			tweetCache.set(`${userid}${times}`, data);
 			return data;
 		})
-		.then(data => res.status(200).json(data))
-		.catch(err => res.status(400).json(err));
+		.then(data => {
+			console.log(`GET /api/tweets 200 from twitter api ${userid} ${tiems}`);
+			res.status(200).json(data);
+		})
+		.catch(err => {
+			console.log(`GET /api/tweets 400 error when do fetch ${userid} ${times}`);
+			res.status(400).json(err);
+		});
 }
