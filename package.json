@@ -3,6 +3,6 @@
 	"dependencies": {
 		"dotenv": "^16.0.3",
 		"node-fetch": "^3.3.0",
-		"twitter-api-v2": "^1.12.9"
+		"node-getopt": "^0.3.2"
 	}
 }

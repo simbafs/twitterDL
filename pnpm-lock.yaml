@@ -3,12 +3,12 @@ lockfileVersion: 5.4
 specifiers:
   dotenv: ^16.0.3
   node-fetch: ^3.3.0
-  twitter-api-v2: ^1.12.9
+  node-getopt: ^0.3.2
 
 dependencies:
   dotenv: 16.0.3
   node-fetch: 3.3.0
-  twitter-api-v2: 1.12.9
+  node-getopt: 0.3.2
 
 packages:
 
@@ -51,8 +51,9 @@ packages:
       formdata-polyfill: 4.0.10
     dev: false
 
-  /twitter-api-v2/1.12.9:
-    resolution: {integrity: sha512-nmKwcUiXgoEfcOtAH/hYojy0oSxbouWvvNsHVphiHSW9x9aus2Jdg9/NRB2Gzyq5G6xl+EkjUlEWwBQjp1FOfg==}
+  /node-getopt/0.3.2:
+    resolution: {integrity: sha512-yqkmYrMbK1wPrfz7mgeYvA4tBperLg9FQ4S3Sau3nSAkpOA0x0zC8nQ1siBwozy1f4SE8vq2n1WKv99r+PCa1Q==}
+    engines: {node: '>= 0.6.0'}
     dev: false
 
   /web-streams-polyfill/3.2.1:
