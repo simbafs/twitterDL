@@ -37,3 +37,13 @@ node dl.js [--pretty] [-o output.json] [-t -1] <username>
 ```
 node dl.js --user [--pretty] <username>
 ```
+
+# webui
+## start
+```
+npm run build && npm run start
+```
+then go to http://lcoalhost:3000
+
+> **Notice**   
+> UI/UX is still bad, give me some time to imporve it
