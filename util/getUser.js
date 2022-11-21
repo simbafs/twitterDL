@@ -1,7 +1,5 @@
 import fetch from "node-fetch";
 import qs from "node:querystring";
-import dotenv from "dotenv";
-dotenv.config();
 
 let query = {
 	"user.fields": [
@@ -28,7 +26,7 @@ export default function getUserId(username, bearerToken) {
 	const option = {
 		method: "GET",
 		headers: {
-			Authorization: `Bearer ${process.env.BEARER_TOKEN}`,
+			Authorization: `Bearer ${bearerToken}`,
 		},
 	};
 
