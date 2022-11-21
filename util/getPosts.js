@@ -58,19 +58,17 @@ export default async function get(userID, times, bearerToken) {
 	let posts = [];
 	let includes = {};
 	let errors = [];
+	let next_token = "";
 
-	// getPosts ${limit} times, each execution get about 100 tweets
-	// limit = -1 -> execute unlimited times
-	function getPosts(limit, next_token) {
-		if (limit == 0) {
-			return;
-		}
-		limit--;
+	// getPosts ${times} times, each round get about 100 tweets
+	// times = -1 -> execute unlimited times
+	do {
+		times--;
 		if (next_token) {
 			query.pagination_token = next_token;
 		}
 		let querystring = qs.stringify(query);
-		return fetch(`${url}?${querystring}`, option)
+		await fetch(`${url}?${querystring}`, option)
 			.then(res => res.json())
 			.then(data => {
 				if (data.errors) {
@@ -81,11 +79,9 @@ export default async function get(userID, times, bearerToken) {
 				console.log(
 					`get ${data.meta.result_count} ${data.meta.oldest_id}-${data.meta.newest_id}`
 				);
-				if (data.meta.next_token) return getPosts(limit, data.meta.next_token);
 			})
 			.catch(err => console.error("token:", next_token, "err:", err));
-	}
+	} while (next_token || times != 0);
 
-	await getPosts(times, '');
-	return {posts, includes, errors}
+	return { posts, includes, errors };
 }
