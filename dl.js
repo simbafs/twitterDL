@@ -6,6 +6,10 @@ import getUser from "./util/getUser.js";
 import getPosts from "./util/getPosts.js";
 
 dotenv.config();
+if (!process.env.BEARER_TOKEN) {
+	console.error("BEARER_TOKEN not found");
+	process.exit(1);
+}
 
 const opt = getopt
 	.create([
@@ -19,7 +23,6 @@ const opt = getopt
 	.parseSystem();
 
 const username = opt.argv[0];
-
 
 if (opt.options.version) {
 	console.log(opt.long_options.version.comment);
