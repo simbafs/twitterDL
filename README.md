@@ -1,4 +1,4 @@
-# download-twitter
+# TwitterDL
 download all you tweet to json file
 
 this version can only get public tweet from public user
