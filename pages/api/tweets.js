@@ -1,4 +1,4 @@
-import getPosts from "../../util/getPosts.js";
+import getPosts from "../../util/getTweets.js";
 import NodeCache from "node-cache";
 
 const tweetCache = new NodeCache({

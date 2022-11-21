@@ -55,7 +55,7 @@ export default async function get(userID, times, bearerToken) {
 		},
 	};
 
-	let posts = [];
+	let tweets = [];
 	let includes = {};
 	let errors = [];
 
@@ -76,7 +76,7 @@ export default async function get(userID, times, bearerToken) {
 				if (data.errors) {
 					errors = errors.concat(data.errors);
 				}
-				posts = posts.concat(data.data);
+				tweets = tweets.concat(data.data);
 				mergeObject(data.includes, includes);
 				console.log(
 					`get ${data.meta.result_count} ${data.meta.oldest_id}-${data.meta.newest_id}`
@@ -87,5 +87,5 @@ export default async function get(userID, times, bearerToken) {
 	}
 
 	await getPosts(times, '');
-	return {posts, includes, errors}
+	return {tweets, includes, errors}
 }
