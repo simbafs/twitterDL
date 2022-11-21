@@ -28,7 +28,7 @@ export default function Home() {
 		url => fetch(url).then(res => res.json())
 	);
 	const { data: tweets, error: tweetError } = useSWR(
-		user ? `/api/tweets?userid=${user.id}&times=${times}` : null,
+		isClick && user ? `/api/tweets?userid=${user.id}&times=${times}` : null,
 		url => fetch(url).then(res => res.json())
 	);
 
