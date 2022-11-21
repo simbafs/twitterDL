@@ -79,6 +79,7 @@ export default async function get(userID, times, bearerToken) {
 				console.log(
 					`get ${data.meta.result_count} ${data.meta.oldest_id}-${data.meta.newest_id}`
 				);
+				next_token = data.meta.next_token;
 			})
 			.catch(err => console.error("token:", next_token, "err:", err));
 	} while (next_token || times != 0);
