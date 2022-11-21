@@ -6,7 +6,7 @@ this version can only get public tweet from public user
 > **Warning** **Lots of shit code**
 
 # Usage
-Go to https://developer.twitter.com/en/portal/dashboard create a new bot and then fill .env with .env.example as template first.
+Go to https://developer.twitter.com/en/portal/dashboard create a new bot and then fill .env.local with .env.example as template first.
 
 ## help message
 ```
