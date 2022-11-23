@@ -6,10 +6,7 @@ import getUser from "./util/getUser.js";
 import getPosts from "./util/getPosts.js";
 
 dotenv.config();
-if (!process.env.BEARER_TOKEN) {
-	console.error("BEARER_TOKEN not found");
-	process.exit(1);
-}
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 const opt = getopt
 	.create([
@@ -21,6 +18,12 @@ const opt = getopt
 	])
 	.bindHelp()
 	.parseSystem();
+
+if (!process.env.BEARER_TOKEN) {
+	console.error("BEARER_TOKEN not found");
+	process.exit(1);
+}
+
 
 const username = opt.argv[0];
 
